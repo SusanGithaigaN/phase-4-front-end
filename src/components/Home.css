@@ -51,8 +51,8 @@
 }
 /* NavBar */
 .nav, .nav-link, .nav-main, .nav2{
-  padding-left: 4em !important;
-  padding-right: 4em !important;
+  padding-left: 3em !important;
+  padding-right: 3em !important;
 }
 .nav, .nav-link{
   color: #00008B !important;
@@ -194,35 +194,28 @@ height: 100vh;
   margin-top: 5em;
   margin-bottom: 80em !important;
 }
-
-/* star rating
-.star-rating {
-  display: inline-block;
-  font-size: 1.5rem;
-  line-height: 1;
+/* join us */
+.add-form{
+  padding-top: 3em !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-left: 20em !important;
+  margin-right: 20em !important;
 }
 
-.star-rating span:before {
-  content: '\u2605';
-  margin-right: 0.5rem;
-  color: #ccc;
+.MDBInput {
+  margin: 10px 0;
 }
 
-.star-rating .star-active {
-  color: gold;
+.join{
+  color: #00008B;
+  text-align: center;
+  margin-top: 2em;
+  font-size: 60px;
+  margin-bottom: 1em;
 }
-
-.star-rating .star-good {
-  color: green;
-}
-
-.star-rating .star-ok {
-  color: orange;
-}
-
-.star-rating .star-bad {
-  color: red;
-} */
 
 
 /* footer */

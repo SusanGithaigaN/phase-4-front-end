@@ -59,20 +59,11 @@ export default function NavBar() {
             </MDBNavbarItem>
 
             <MDBNavbarItem>
-              {/* <MDBDropdown>
-                <MDBDropdownToggle tag='a' className='nav-link' role='button' > */}
-                  
                   <MDBNavbarLink href='staff' className='nav'>Our Staff</MDBNavbarLink>
-                {/* </MDBDropdownToggle> */}
-                {/* <MDBDropdownMenu className='nav'> */}
-                {/* style={{color: "#00008B !important"}} */}
-                  {/* <MDBDropdownItem link  className='login-text'>Bookings</MDBDropdownItem>
-                  <MDBDropdownItem link  className='login-text'>Reviews</MDBDropdownItem> */}
-                  {/* <MDBDropdownItem link>Something else here</MDBDropdownItem> */}
-                {/* </MDBDropdownMenu> */}
-              {/* </MDBDropdown> */}
             </MDBNavbarItem>
-
+            <MDBNavbarItem>
+                  <MDBNavbarLink href='addcleaner' className='nav'>Join us</MDBNavbarLink>
+            </MDBNavbarItem>
             <MDBNavbarItem>
             {/* <MDBNavItem> */}
               <MDBDropdown>

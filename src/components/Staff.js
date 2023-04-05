@@ -32,7 +32,9 @@ export default function Staff(){
     // set current user id
     const [id, setId] = useState(null);
     // add  a state variable to hold the cleaner's id
-    const [cleanerId, setCleanerId] = useState(null);
+    // const [cleanerId, setCleanerId] = useState(null);
+    const [cleanerId, setCleanerId] = useState(staffData.length > 0 ? staffData[0].id : null);
+
 
     const [reviewInfo, setReviewInfo] = useState({
         rating: 0,
@@ -73,7 +75,7 @@ export default function Staff(){
 
 
     //   form submission:handleSubmit()
-      function handleSubmit(e){
+    function handleSubmit(e){
         // prevent form autosubmit
         // rails backend url:localhost:3000/cleaners/:id/reviews
         e.preventDefault();
@@ -83,39 +85,46 @@ export default function Staff(){
             return;
         }
 
-        // get the id of the staff member being viewed
-        const staffMemberId = cleanerId;
+        if( cleanerId === undefined){
+            console.error("Cannot submit review: id is undefined");
+            return;
+        }
 
-        fetch(`/cleaners/${staffMemberId}/reviews`,{
+        // get the id of the staff member being viewed
+
+        const staffMemberId = cleanerId;
+        fetch(`/cleaners/${staffMemberId}/reviews`, {
             method: 'POST',
             headers: {
-                "Content-Type": "application/json",
+              "Content-Type": "application/json",
             },
-            body: JSON.stringify(reviewInfo),
-        })
-        .then((res) => res.json())
-        .then((data) => {
-            setStaffData((prevData) =>{
-                prevData.map((staffMember)=>{
-                    if(staffMember.id === data.cleaner_id){
-                        return{
-                            ...staffMember,
-                            reviews: [...staffMember.reviews, data],
-                        };
-                    }else{
-                        return staffMember;
-                    }
-                })
-            });
-            setReviewModal(false);
-            setReviewInfo({
+            body: JSON.stringify({
+              ...reviewInfo,
+              cleaner_id: staffMemberId // set the staffMember.id before assigning it
+            }),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              setStaffData((prevData) => {
+                return prevData.map((staffMember) => {
+                  if (staffMember.id === data.cleaner_id) {
+                    return {
+                      ...staffMember,
+                      reviews: [...staffMember.reviews, data],
+                    };
+                  } else {
+                    return staffMember;
+                  }
+                });
+              });
+              setReviewModal(false);
+              setReviewInfo({
                 rating: 0,
                 review: "",
-            });
-        })
-        .catch((err) => console.error(err));
-      }
-         
+              });
+            })
+            .catch((err) => console.error(err));
+        }
 
     return(
         <div className='staff'>
@@ -123,7 +132,7 @@ export default function Staff(){
             <h1>Our Staff</h1>
             {/* convert staff data into an array before mapping it's contents */}
             {Array.isArray(staffData) && staffData.map((staffMember) => (  
-                <MDBCard key={staffMember.id}  onClick={() => { setId(staffMember.id); setCleanerId(staffMember.id); }} style={{display: 'inline-block', marginLeft: '13em', justifyContent: 'center', flexDirection: 'column', alignContent: 'center'}} id='staff_details'> 
+                <MDBCard key={staffMember.id}  onClick={() => { setId(staffMember.id); setCleanerId(staffMember.id);  console.log('staffMember.id:', staffMember.id);}} style={{display: 'inline-block', marginLeft: '13em', justifyContent: 'center', flexDirection: 'column', alignContent: 'center'}} id='staff_details'> 
                     <MDBCardImage position='top' alt={staffMember.name} src={staffMember.image_url} style={{width:  '50%', height: '50%', display: 'block', marginLeft: 'auto', marginRight: 'auto' }}/>
                         <MDBCardBody>
                             <MDBCardTitle>Names: {staffMember.name}</MDBCardTitle>
@@ -149,7 +158,7 @@ export default function Staff(){
                         </MDBListGroup>
                         <MDBCardBody>
                             {/* <MDBCardLink href='/addreview'>Add Review</MDBCardLink> */}
-                            <MDBBtn disabled={cleanerId === null} onClick={() => setReviewModal(true)} style={{backgroundColor: 'transparent', color:'lightblue', width: 'fitContent', height: 'auto'}}>Add Review</MDBBtn>
+                            <MDBBtn disabled={staffMember === null} onClick={() => setReviewModal(true)} style={{backgroundColor: 'transparent', color:'lightblue', width: 'fitContent', height: 'auto'}}>Add Review</MDBBtn>
                             <MDBBtn href='/booking' style={{ width: 'fitContent', height: 'auto'}}>Book Cleaner</MDBBtn>
                         </MDBCardBody>
                 </MDBCard>  
@@ -200,7 +209,7 @@ export default function Staff(){
                         rows="3"
                         required
                     ></textarea>
-                    <label htmlFor='review-comment'>Cleaner:</label>
+                    {/* <label htmlFor='review-comment'>Cleaner:</label>
                     <select
                         className="form-control"
                         id="review"
@@ -212,7 +221,7 @@ export default function Staff(){
                         <option value="1">Cleaner 1</option>
                         <option value="2">Cleaner 2</option>
                         <option value="3">Cleaner 3</option>
-                    </select>
+                    </select> */}
                 </div>  
                 <div className='modal-footer'>
                   <MDBBtn color='secondary'>
@@ -229,6 +238,7 @@ export default function Staff(){
             </MDBModalContent>
             </MDBModalDialog>
         </MDBModal>
+        
     </div>
     )
 }
