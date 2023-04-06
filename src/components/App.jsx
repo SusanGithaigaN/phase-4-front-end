@@ -13,6 +13,8 @@ import LoggedUser from './contexts/LoggedUser';
 import Booking from './Booking';
 import Logout from './Logout';
 import AddCleaner from './AddCleaner';
+import Dashboard from './admin/Dashboard';
+import AdminLogin from './admin/AdminLogin';
 
 
 function App() {
@@ -27,8 +29,10 @@ function App() {
         <Route exact path='about' element={<About />} />
         <Route exact path='staff' element={<Staff />} />
         <Route exact path='booking' element={<Booking />} />
+        <Route exact path='dashboard' element={<Dashboard />} />
         <Route exact path='addcleaner' element={<AddCleaner />} />
         <Route exact path='login' element={<Login />} />
+        <Route exact path='adminlogin' element={<AdminLogin />} />
         <Route exact path='signup' element={<Signup />} />
         <Route exact path='logout' element={<Logout />} />
       </Routes>
