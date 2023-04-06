@@ -15,7 +15,7 @@ import Logout from './Logout';
 import AddCleaner from './AddCleaner';
 import Dashboard from './admin/Dashboard';
 import AdminLogin from './admin/AdminLogin';
-
+import AdminSignup from './admin/AdminSignup';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -34,6 +34,7 @@ function App() {
         <Route exact path='login' element={<Login />} />
         <Route exact path='adminlogin' element={<AdminLogin />} />
         <Route exact path='signup' element={<Signup />} />
+        <Route exact path='adminsignup' element={<AdminSignup />} />
         <Route exact path='logout' element={<Logout />} />
       </Routes>
       <Footer /> 

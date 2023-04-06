@@ -46,7 +46,7 @@ export default function AddCleaner() {
           and start your journey to a fulfilling career with us!</p>
         </div>
       <form onSubmit={handleSubmit} className='add-form'>
-        <p style={{textAlign:'center', fontSize:'15px', backgroundColor:'yellow'}}>
+        <p style={{textAlign:'center', fontSize:'18px', fontWeight: 'bold'}}>
         Add your personal details here</p>
         <MDBInputGroup className='mb-3'>
           <span className='input-group-text'>Name</span>

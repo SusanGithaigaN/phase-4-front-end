@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput, MDBBtn, MDBIcon, MDBTypography } from 'mdb-react-ui-kit';
-
+import './admin/Admin.css'
 export default function Booking() {
   const [formData, setFormData] = useState({
     user_id: '',
@@ -31,7 +31,7 @@ export default function Booking() {
   };
 
   return (
-    <div className="mx-auto gradient-custom mt-5" style={{ maxWidth: '800px', height: '400px', height: '60vh' }}>
+    <div className="mx-auto gradient-custom mt-5"  id='book' style={{ maxWidth: '800px', height: '400px' }}>
       <MDBRow className="pt-3 mx-3" id='booking'>
         <MDBCol md="3">
           <div className="text-center" style={{ marginTop: '50px', marginLeft: '10px'}}>

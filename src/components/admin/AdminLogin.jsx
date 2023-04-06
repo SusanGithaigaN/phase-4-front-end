@@ -48,7 +48,7 @@ function AdminLogin() {
   };
 
   return (
-    <MDBContainer fluid className="p-3 my-5 h-custom">
+    <MDBContainer fluid className="p-3 my-5 h-custom" id='admlog' style={{marginBottom: '8em!important'}}>
 
       <MDBRow>
 
@@ -76,7 +76,7 @@ function AdminLogin() {
 
           {/* </div> */}
 
-          <div className="divider d-flex align-items-center my-4">
+          <div className="divider d-flex align-items-center my-4" id='admlog'>
             <p className="text-center fw-bold mx-3 mb-0">Sign in</p>
           </div>
 
