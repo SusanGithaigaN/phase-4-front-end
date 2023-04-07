@@ -1,5 +1,5 @@
 import './Home.css'
-import React, {useState, useContext} from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LoggedUser from './contexts/LoggedUser';
 
@@ -39,6 +39,7 @@ function Login() {
       const data = await response.json();
       if (response.ok) {
         setUser(data.user);
+        sessionStorage.setItem('user', JSON.stringify(data.user)); // save user data to sessionStorage
         navigate('/staff');
       } else {
         throw new Error(data.message);
@@ -49,6 +50,12 @@ function Login() {
     }
   };
   
+  useEffect(() => {
+    const user = JSON.parse(sessionStorage.getItem('user'));
+    if (user) {
+      setUser(user);
+    }
+  }, [setUser]);
 
   const handleChange = (event) =>{
     const { name, value } = event.target;
@@ -56,7 +63,7 @@ function Login() {
       ...prevFormData, [name]:value
     }));
   };
-
+  
   return (
     <div className='testlog'>
       <MDBContainer className='my-5' id='login'>

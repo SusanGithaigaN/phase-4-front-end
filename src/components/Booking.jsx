@@ -1,6 +1,9 @@
 import { useState } from 'react';
+import { useContext, useEffect } from 'react';
+// import LoggedUser from '../contexts/LoggedUser';
 import { MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput, MDBBtn, MDBIcon, MDBTypography } from 'mdb-react-ui-kit';
 import './admin/Admin.css'
+
 export default function Booking() {
   const [formData, setFormData] = useState({
     user_id: '',
