@@ -26,29 +26,29 @@ function Login() {
   // get setUser function from context
   const { setUser } = useContext(LoggedUser);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    fetch('/login', {
-      method: 'POST', 
-      headers:{
-        'Content-type' : 'application/json'
-      },
-      body: JSON.stringify(formData)
-    })
-    .then((res) => res.json())
-    .then((data) =>{
-      // console.log('Successfully Logged in', data);
-      // alert('Successfully Logged in')
-      // set user state
-      setUser(data.user);
-      // redirect user to aboutus page if userlogin === success
-      navigate('/about');
-    })
-    // catch errs
-    .catch((err) =>{
-      console.log('Error', err)
-    });
+    try {
+      const response = await fetch('/login', {
+        method: 'POST', 
+        headers:{
+          'Content-type' : 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+      const data = await response.json();
+      if (response.ok) {
+        setUser(data.user);
+        navigate('/staff');
+      } else {
+        throw new Error(data.message);
+      }
+    } catch (error) {
+      console.log('Error', error);
+      alert('Invalid username or password');
+    }
   };
+  
 
   const handleChange = (event) =>{
     const { name, value } = event.target;

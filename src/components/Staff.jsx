@@ -133,7 +133,7 @@ export default function Staff(){
             {/* convert staff data into an array before mapping it's contents */}
             {Array.isArray(staffData) && staffData.map((staffMember) => (  
                 <MDBCard key={staffMember.id}  onClick={() => { setId(staffMember.id); setCleanerId(staffMember.id);  console.log('staffMember.id:', staffMember.id);}} style={{display: 'inline-block', marginLeft: '13em', justifyContent: 'center', flexDirection: 'column', alignContent: 'center'}} id='staff_details'> 
-                    <MDBCardImage position='top' alt={staffMember.name} src={staffMember.image_url} style={{width:  '50%', height: '50%', display: 'block', marginLeft: 'auto', marginRight: 'auto' }}/>
+                    <MDBCardImage position='top' alt={staffMember.name} src={staffMember.image_url} style={{width:  '50%', height: '50%', display: 'block', marginLeft: 'auto', marginRight: 'auto', marginTop:'2em', marginBottom: '1.5em' }}/>
                         <MDBCardBody>
                             <MDBCardTitle>Names: {staffMember.name}</MDBCardTitle>
                             <MDBCardText>
