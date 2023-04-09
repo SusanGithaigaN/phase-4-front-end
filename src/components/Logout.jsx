@@ -11,7 +11,7 @@ function Logout() {
         // Make a POST request to the backend to log out the user
         await fetch('/logout', { method: 'DELETE' });
         // Redirect the user to the home page
-        navigate('/');
+        navigate('https://phase-4-project-jue6.onrender.com/');
       }
 
     logout();

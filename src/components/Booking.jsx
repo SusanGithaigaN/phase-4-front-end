@@ -15,7 +15,7 @@ export default function Booking() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch('/bookings', {
+    const response = await fetch('https://phase-4-project-jue6.onrender.com/bookings', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

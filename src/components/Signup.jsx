@@ -43,7 +43,7 @@ function Signup() {
     .then((data) => {
       console.log('User successfully created', data);
       // redirect user to login page if acc === created
-      history('/login');
+      history('https://phase-4-project-jue6.onrender.com/login');
     })
     // catch errors
     // display error on console

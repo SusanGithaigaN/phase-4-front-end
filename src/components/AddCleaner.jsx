@@ -12,7 +12,7 @@ export default function AddCleaner() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const newCleaner = { name, age, phonenumber, id_no, image_url, experience };
-    fetch('/cleaners', {
+    fetch('https://phase-4-project-jue6.onrender.com/cleaners', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

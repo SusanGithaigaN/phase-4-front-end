@@ -43,7 +43,7 @@ export default function Staff(){
     });
 
     useEffect(() =>{
-        fetch('/cleaners/summary')
+        fetch('https://phase-4-project-jue6.onrender.com/cleaners/summary')
         .then(response => response.json())
         .then(data => setStaffData(data));
     }, []);
