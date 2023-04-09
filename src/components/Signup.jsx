@@ -32,7 +32,7 @@ function Signup() {
 
   const handleSubmit= (e) => {
     e.preventDefault();
-    fetch('/users', {
+    fetch('https://phase-4-project-jue6.onrender.com/users', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'

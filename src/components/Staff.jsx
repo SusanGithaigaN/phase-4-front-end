@@ -93,7 +93,7 @@ export default function Staff(){
         // get the id of the staff member being viewed
 
         const staffMemberId = cleanerId;
-        fetch(`/cleaners/${staffMemberId}/reviews`, {
+        fetch(`https://phase-4-project-jue6.onrender.com/cleaners/${staffMemberId}/reviews`, {
             method: 'POST',
             headers: {
               "Content-Type": "application/json",

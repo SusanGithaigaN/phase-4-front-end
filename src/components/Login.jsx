@@ -29,7 +29,7 @@ function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch('/login', {
+      const response = await fetch('https://phase-4-project-jue6.onrender.com', {
         method: 'POST', 
         headers:{
           'Content-type' : 'application/json'
