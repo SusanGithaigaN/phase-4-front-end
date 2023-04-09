@@ -26,29 +26,48 @@ function Login() {
   // get setUser function from context
   const { setUser } = useContext(LoggedUser);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      const response = await fetch('https://phase-4-project-jue6.onrender.com/login', {
-        method: 'POST', 
-        headers:{
-          'Content-type' : 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
-      const data = await response.json();
-      if (response.ok) {
-        setUser(data.user);
-        sessionStorage.setItem('user', JSON.stringify(data.user)); // save user data to sessionStorage
-        navigate('/staff');
-      } else {
-        throw new Error(data.message);
-      }
-    } catch (error) {
-      console.log('Error', error);
-      alert('Invalid username or password');
-    }
-  };
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  //   try {
+  //     const response = await fetch('https://phase-4-project-jue6.onrender.com/login', {
+  //       method: 'POST', 
+  //       headers:{
+  //         'Content-type' : 'application/json'
+  //       },
+  //       body: JSON.stringify(formData)
+  //     });
+  //     const data = await response.json();
+  //     if (response.ok) {
+  //       setUser(data.user);
+  //       sessionStorage.setItem('user', JSON.stringify(data.user)); // save user data to sessionStorage
+  //       navigate('/staff');
+  //     } else {
+  //       throw new Error(data.message);
+  //     }
+  //   } catch (error) {
+  //     console.log('Error', error);
+  //     alert('Invalid username or password');
+  //   }
+  // };
+  const response = await fetch('https://phase-4-project-jue6.onrender.com/login', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    username: 'user@example.com',
+    password: 'password123'
+  })
+});
+
+const data = await response.json();
+if (response.ok) {
+  // Login successful, do something with the user data
+} else {
+  // Login failed, display error message
+  console.log(data.message);
+}
+
   
   useEffect(() => {
     const user = JSON.parse(sessionStorage.getItem('user'));
@@ -63,7 +82,6 @@ function Login() {
       ...prevFormData, [name]:value
     }));
   };
-  
   return (
     <div className='testlog'>
       <MDBContainer className='my-5' id='login'>
