@@ -29,7 +29,7 @@ function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch('/login', {
+      const response = await fetch('https://phase-4-project-jue6.onrender.com/login', {
         method: 'POST', 
         headers:{
           'Content-type' : 'application/json'
@@ -40,7 +40,7 @@ function Login() {
       if (response.ok) {
         setUser(data.user);
         sessionStorage.setItem('user', JSON.stringify(data.user)); // save user data to sessionStorage
-        navigate('/staff');
+        navigate('https://phase-4-project-jue6.onrender.com/staff');
       } else {
         throw new Error(data.message);
       }
