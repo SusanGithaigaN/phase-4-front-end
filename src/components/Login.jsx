@@ -40,7 +40,7 @@ function Login() {
       if (response.ok) {
         setUser(data.user);
         sessionStorage.setItem('user', JSON.stringify(data.user)); // save user data to sessionStorage
-        navigate('https://phase-4-project-jue6.onrender.com/staff');
+        navigate('/staff');
       } else {
         throw new Error(data.message);
       }
